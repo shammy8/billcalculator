@@ -16,4 +16,8 @@ export class PeopleService {
       this.people.unshift(name);
     }
   }
+
+  clearAll() {
+    this.people = [];
+  }
 }

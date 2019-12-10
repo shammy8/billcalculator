@@ -20,4 +20,9 @@ export class PeopleComponent implements OnInit {
     this.peopleService.addPerson(name);
     this.name = '';
   }
+
+  clearAll() {
+    this.peopleService.clearAll();
+    this.people = this.peopleService.people;
+  }
 }
