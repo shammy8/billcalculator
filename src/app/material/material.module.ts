@@ -1,0 +1,26 @@
+import { NgModule } from '@angular/core';
+import {
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatListModule,
+  MatDividerModule,
+  MatCardModule,
+} from '@angular/material';
+
+const MaterialComponents = [
+  MatFormFieldModule,
+  MatInputModule,
+  MatListModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatDividerModule,
+  MatCardModule,
+];
+
+@NgModule({
+  exports: [MaterialComponents],
+  imports: [MaterialComponents],
+})
+export class MaterialModule {}
