@@ -32,12 +32,23 @@
   </button>
 
   <div>
-    <button mat-flat-button color="warn" (click)="clearAll()">
+    <button
+      mat-flat-button
+      color="warn"
+      (click)="clearAll()"
+      [matBadge]="people.length"
+    >
       Clear All Names
     </button>
   </div>
 
   <mat-list>
-    <mat-list-item *ngFor="let person of people">{{ person }}</mat-list-item>
+    <mat-list-item
+      *ngFor="let person of people; let i = index"
+      (click)="deleteName(i)"
+    >
+      <p>{{ person }}</p>
+      <mat-icon>clear</mat-icon>
+    </mat-list-item>
   </mat-list>
 </mat-card>

@@ -21,6 +21,10 @@ export class PeopleComponent implements OnInit {
     this.name = '';
   }
 
+  deleteName(index: number) {
+    this.peopleService.deleteName(index);
+  }
+
   clearAll() {
     this.peopleService.clearAll();
     this.people = this.peopleService.people;

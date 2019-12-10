@@ -17,6 +17,11 @@ export class PeopleService {
     }
   }
 
+  deleteName(index: number) {
+    console.log(index);
+    this.people.splice(index, 1);
+  }
+
   clearAll() {
     this.people = [];
   }
