@@ -7,6 +7,7 @@ import {
   MatListModule,
   MatDividerModule,
   MatCardModule,
+  MatDialogModule,
 } from '@angular/material';
 
 const MaterialComponents = [
@@ -17,6 +18,7 @@ const MaterialComponents = [
   MatButtonToggleModule,
   MatDividerModule,
   MatCardModule,
+  MatDialogModule,
 ];
 
 @NgModule({
