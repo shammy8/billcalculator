@@ -1,12 +1,12 @@
 <mat-card>
   <mat-card-title>People</mat-card-title>
-  <mat-form-field floatLabel="always" appearance="outline">
+
+  <mat-form-field floatLabel="auto" appearance="standard">
     <mat-label>Name</mat-label>
     <input
       type="text"
       matInput
       required
-      placeholder="Name"
       [(ngModel)]="name"
       #nameInput="ngModel"
     />
@@ -32,12 +32,12 @@
   </button>
 
   <div>
-    <button mat-flat-button color="warn" (click)="clearAll()">Clear All</button>
+    <button mat-flat-button color="warn" (click)="clearAll()">
+      Clear All Names
+    </button>
   </div>
 
   <mat-list>
-    <mat-list-item *ngFor="let person of people" matbadge="x">{{
-      person
-    }}</mat-list-item>
+    <mat-list-item *ngFor="let person of people">{{ person }}</mat-list-item>
   </mat-list>
 </mat-card>
