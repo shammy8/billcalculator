@@ -11,7 +11,6 @@ export class PeopleService {
 
   addPerson(name: string) {
     if (this.people.includes(name)) {
-      console.log(`${name} already on the list`);
       this.dialog.open(DialogAlreadyExistsComponent, { data: name });
     } else {
       this.people.unshift(name);

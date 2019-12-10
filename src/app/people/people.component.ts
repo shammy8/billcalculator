@@ -8,6 +8,7 @@ import { PeopleService } from '../people.service';
 })
 export class PeopleComponent implements OnInit {
   people: string[];
+  name: string;
 
   constructor(private peopleService: PeopleService) {}
 
@@ -17,5 +18,6 @@ export class PeopleComponent implements OnInit {
 
   addPerson(name: string) {
     this.peopleService.addPerson(name);
+    this.name = '';
   }
 }

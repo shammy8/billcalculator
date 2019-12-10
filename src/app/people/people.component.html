@@ -2,16 +2,14 @@
   <mat-card-title>People</mat-card-title>
   <mat-form-field floatLabel="always" appearance="outline">
     <mat-label>Name</mat-label>
-    <input matInput required #name />
+    <input matInput required placeholder="Name" [(ngModel)]="name" />
   </mat-form-field>
 
-  <button mat-flat-button color="primary" (click)="addPerson(name.value)">
+  <button mat-flat-button color="primary" (click)="addPerson(name)">
     Add Person
   </button>
 
-  <div>
-    <mat-list>
-      <mat-list-item *ngFor="let person of people">{{ person }}</mat-list-item>
-    </mat-list>
-  </div>
+  <mat-list>
+    <mat-list-item *ngFor="let person of people">{{ person }}</mat-list-item>
+  </mat-list>
 </mat-card>
