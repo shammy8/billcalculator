@@ -9,9 +9,10 @@ import { AppComponent } from './app.component';
 import { PeopleComponent } from './people/people.component';
 import { PeopleService } from './people.service';
 import { DialogAlreadyExistsComponent } from './dialog-already-exists/dialog-already-exists.component';
+import { ReceiptItemsComponent } from './receipt-items/receipt-items.component';
 
 @NgModule({
-  declarations: [AppComponent, PeopleComponent, DialogAlreadyExistsComponent],
+  declarations: [AppComponent, PeopleComponent, DialogAlreadyExistsComponent, ReceiptItemsComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
