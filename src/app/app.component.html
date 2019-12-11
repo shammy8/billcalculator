@@ -6,8 +6,20 @@
 
   <mat-card>
     <mat-card-title>How much to pay</mat-card-title>
-    <mat-list>
-      <mat-list-item *ngFor="let person of people">{{ person }}</mat-list-item>
-    </mat-list>
+
+    <mat-table [dataSource]="amountToPay">
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="amount">
+        <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{ element.amount }}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
   </mat-card>
 </div>
