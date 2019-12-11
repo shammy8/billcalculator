@@ -53,7 +53,7 @@
     Add Item
   </button>
 
-  <div>
+  <div class="clear-all-button-container">
     <button
       mat-flat-button
       color="warn"
@@ -64,10 +64,19 @@
     </button>
   </div>
 
-  <mat-list>
-    <mat-list-item *ngFor="let it of items; let i = index">
-      <p>{{ it.name }} {{ it.price }}</p>
-      <mat-icon (click)="deleteItem(i)">clear</mat-icon>
-    </mat-list-item>
-  </mat-list>
+  <mat-accordion *ngFor="let eachItem of items; let i = index">
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{ eachItem.name }} </mat-panel-title>
+        <mat-panel-description>£{{ eachItem.price }}</mat-panel-description>
+        <mat-icon (click)="deleteItem(i)">clear</mat-icon>
+      </mat-expansion-panel-header>
+      <ul>
+        <li *ngFor="let eachPerson of eachItem.payers">{{ eachPerson }}</li>
+      </ul>
+      <mat-action-row>
+        <button mat-button>Button</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
 </mat-card>

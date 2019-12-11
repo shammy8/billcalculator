@@ -19,14 +19,14 @@ export class ReceiptItemsComponent implements OnInit {
   ngOnInit() {
     this.people = this.peopleService.people;
     this.items = [
-      { name: 'Steak', price: 23.99 },
-      { name: 'Burger', price: 12.99 },
-      { name: 'Coke', price: 2.99 },
+      { name: 'Steak', price: 23.99, payers: ['Allan', 'Grace'] },
+      { name: 'Burger', price: 12.99, payers: ['Samuel'] },
+      { name: 'Coke', price: 2.99, payers: ['Allan'] },
     ];
   }
 
   addItem(nameIn: string, priceIn: number) {
-    this.items.push({ name: nameIn, price: priceIn });
+    this.items.push({ name: nameIn, price: priceIn, payers: [] });
     this.item = '';
     this.itemPrice = null;
   }

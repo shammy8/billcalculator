@@ -10,6 +10,7 @@ import {
   MatDialogModule,
   MatIconModule,
   MatBadgeModule,
+  MatExpansionModule,
 } from '@angular/material';
 
 const MaterialComponents = [
@@ -23,6 +24,7 @@ const MaterialComponents = [
   MatDialogModule,
   MatIconModule,
   MatBadgeModule,
+  MatExpansionModule,
 ];
 
 @NgModule({
