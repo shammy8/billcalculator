@@ -12,7 +12,12 @@ import { DialogAlreadyExistsComponent } from './dialog-already-exists/dialog-alr
 import { ReceiptItemsComponent } from './receipt-items/receipt-items.component';
 
 @NgModule({
-  declarations: [AppComponent, PeopleComponent, DialogAlreadyExistsComponent, ReceiptItemsComponent],
+  declarations: [
+    AppComponent,
+    PeopleComponent,
+    DialogAlreadyExistsComponent,
+    ReceiptItemsComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
