@@ -64,8 +64,11 @@
     </button>
   </div>
 
-  <mat-accordion *ngFor="let eachItem of items; let iOfItems = index">
-    <mat-expansion-panel hideToggle>
+  <mat-accordion>
+    <mat-expansion-panel
+      *ngFor="let eachItem of items; let iOfItems = index"
+      hideToggle
+    >
       <mat-expansion-panel-header>
         <mat-panel-title>{{ eachItem.name }} </mat-panel-title>
         <mat-panel-description>£{{ eachItem.price }}</mat-panel-description>
