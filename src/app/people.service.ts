@@ -23,6 +23,6 @@ export class PeopleService {
   }
 
   clearAll() {
-    this.people = [];
+    this.people.splice(0, this.people.length);
   }
 }
