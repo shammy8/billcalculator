@@ -40,6 +40,10 @@ export class ReceiptItemsComponent implements OnInit {
     }
   }
 
+  deletePayerFromItem(i: number, iOfPayer: number) {
+    this.items[i].payers.splice(iOfPayer, 1);
+  }
+
   deleteItem(index: number) {
     this.items.splice(index, 1);
   }

@@ -64,16 +64,21 @@
     </button>
   </div>
 
-  <mat-accordion *ngFor="let eachItem of items; let i = index">
+  <mat-accordion *ngFor="let eachItem of items; let iOfItems = index">
     <mat-expansion-panel hideToggle>
       <mat-expansion-panel-header>
         <mat-panel-title>{{ eachItem.name }} </mat-panel-title>
         <mat-panel-description>£{{ eachItem.price }}</mat-panel-description>
-        <mat-icon (click)="deleteItem(i)">clear</mat-icon>
+        <mat-icon (click)="deleteItem(iOfItems)">clear</mat-icon>
       </mat-expansion-panel-header>
 
       <ul>
-        <li *ngFor="let eachPerson of eachItem.payers">{{ eachPerson }}</li>
+        <li *ngFor="let eachPayer of eachItem.payers; let iOfPayer = index">
+          {{ eachPayer }}
+          <mat-icon (click)="deletePayerFromItem(iOfItems, iOfPayer)">
+            clear
+          </mat-icon>
+        </li>
       </ul>
 
       <mat-action-row>
@@ -85,7 +90,7 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <button mat-button (click)="addPayerToItem(i, personInput)">
+        <button mat-button (click)="addPayerToItem(iOfItems, personInput)">
           Add Payer
         </button>
       </mat-action-row>
