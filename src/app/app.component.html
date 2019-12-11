@@ -1,25 +1,34 @@
 <div class="main">
-  <app-people></app-people>
-  <app-receipt-items
-    (sendingItemsToApp)="calculate($event)"
-  ></app-receipt-items>
+  <mat-horizontal-stepper>
+    <mat-step label="Input People">
+      <app-people></app-people>
+    </mat-step>
 
-  <mat-card>
-    <mat-card-title>How much to pay</mat-card-title>
+    <mat-step label="Input Items">
+      <app-receipt-items
+        (sendingItemsToApp)="calculate($event)"
+      ></app-receipt-items>
+    </mat-step>
 
-    <mat-table [dataSource]="amountToPay">
-      <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>
-      </ng-container>
+    <mat-step label="Pay">
+      <mat-card>
+        <mat-card-title>How much to pay</mat-card-title>
 
-      <ng-container matColumnDef="amount">
-        <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
-        <mat-cell *matCellDef="let element">{{ element.amount }}</mat-cell>
-      </ng-container>
+        <mat-table [dataSource]="amountToPay">
+          <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>
+          </ng-container>
 
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-    </mat-table>
-  </mat-card>
+          <ng-container matColumnDef="amount">
+            <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{ element.amount }}</mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+        </mat-table>
+      </mat-card>
+    </mat-step>
+  </mat-horizontal-stepper>
 </div>

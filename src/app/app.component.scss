@@ -1,6 +1,13 @@
-.main {
+// git
+// mat-horizontal-stepper {
+//   min-width: 98%;
+//   min-height: 90vh;
+//   margin: auto;
+// }
+
+mat-step {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 mat-card {
