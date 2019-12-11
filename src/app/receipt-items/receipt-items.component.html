@@ -45,7 +45,7 @@
   </button>
 </mat-form-field>
 
-<mat-form-field style="margin-top: 10px;">
+<mat-form-field>
   <mat-label>Payer's Name</mat-label>
   <mat-select #payerInput [(ngModel)]="payer">
     <mat-option *ngFor="let eachPerson of people" [value]="eachPerson">

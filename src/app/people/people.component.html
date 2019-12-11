@@ -10,6 +10,7 @@
   />
   <mat-error *ngIf="!nameInput.value">Required</mat-error>
   <button
+    class="addperson-button"
     mat-button
     *ngIf="name"
     matSuffix
@@ -21,15 +22,24 @@
   </button>
 </mat-form-field>
 
-<div class="main-buttons">
-  <button
-    mat-flat-button
-    color="primary"
-    (click)="addPerson(name)"
-    [disabled]="nameInput.invalid"
-  >
-    Add Person
-  </button>
+<button
+  mat-flat-button
+  color="primary"
+  (click)="addPerson(name)"
+  [disabled]="nameInput.invalid"
+>
+  Add Person
+</button>
+
+<mat-divider></mat-divider>
+
+<div class="clear-button-and-list">
+  <mat-list>
+    <mat-list-item *ngFor="let person of people; let i = index">
+      <p>{{ person }}</p>
+      <mat-icon (click)="deleteName(i)">clear</mat-icon>
+    </mat-list-item>
+  </mat-list>
 
   <button
     mat-flat-button
@@ -40,10 +50,3 @@
     Clear All Names
   </button>
 </div>
-
-<mat-list>
-  <mat-list-item *ngFor="let person of people; let i = index">
-    <p>{{ person }}</p>
-    <mat-icon (click)="deleteName(i)">clear</mat-icon>
-  </mat-list-item>
-</mat-list>
