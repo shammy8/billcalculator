@@ -1,53 +1,49 @@
-<mat-card>
-  <mat-card-title>People</mat-card-title>
+<mat-form-field floatLabel="auto" appearance="standard">
+  <mat-label>Name</mat-label>
+  <input
+    type="text"
+    matInput
+    required
+    [(ngModel)]="name"
+    #nameInput="ngModel"
+    (keyup.enter)="addPerson(name)"
+  />
+  <mat-error *ngIf="!nameInput.value">Required</mat-error>
+  <button
+    mat-button
+    *ngIf="name"
+    matSuffix
+    mat-icon-button
+    aria-label="Clear"
+    (click)="name = ''"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
 
-  <mat-form-field floatLabel="auto" appearance="standard">
-    <mat-label>Name</mat-label>
-    <input
-      type="text"
-      matInput
-      required
-      [(ngModel)]="name"
-      #nameInput="ngModel"
-      (keyup.enter)="addPerson(name)"
-    />
-    <mat-error *ngIf="!nameInput.value">Required</mat-error>
-    <button
-      mat-button
-      *ngIf="name"
-      matSuffix
-      mat-icon-button
-      aria-label="Clear"
-      (click)="name = ''"
-    >
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-form-field>
+<div class="main-buttons">
+  <button
+    mat-flat-button
+    color="primary"
+    (click)="addPerson(name)"
+    [disabled]="nameInput.invalid"
+  >
+    Add Person
+  </button>
 
-  <div class="main-buttons">
-    <button
-      mat-flat-button
-      color="primary"
-      (click)="addPerson(name)"
-      [disabled]="nameInput.invalid"
-    >
-      Add Person
-    </button>
+  <button
+    mat-flat-button
+    color="warn"
+    (click)="clearAll()"
+    [matBadge]="people.length"
+  >
+    Clear All Names
+  </button>
+</div>
 
-    <button
-      mat-flat-button
-      color="warn"
-      (click)="clearAll()"
-      [matBadge]="people.length"
-    >
-      Clear All Names
-    </button>
-  </div>
-
-  <mat-list>
-    <mat-list-item *ngFor="let person of people; let i = index">
-      <p>{{ person }}</p>
-      <mat-icon (click)="deleteName(i)">clear</mat-icon>
-    </mat-list-item>
-  </mat-list>
-</mat-card>
+<mat-list>
+  <mat-list-item *ngFor="let person of people; let i = index">
+    <p>{{ person }}</p>
+    <mat-icon (click)="deleteName(i)">clear</mat-icon>
+  </mat-list-item>
+</mat-list>

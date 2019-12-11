@@ -1,130 +1,124 @@
-<mat-card>
-  <mat-card-title>Receipt</mat-card-title>
-
-  <mat-form-field floatLabel="auto" appearance="standard">
-    <mat-label>Name of Item</mat-label>
-    <input
-      type="text"
-      matInput
-      required
-      [(ngModel)]="item"
-      #itemInput="ngModel"
-    />
-    <mat-error *ngIf="!itemInput.value">Required</mat-error>
-    <button
-      mat-button
-      *ngIf="item"
-      matSuffix
-      mat-icon-button
-      aria-label="Clear"
-      (click)="item = ''"
-    >
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-form-field>
-
-  <mat-form-field floatLabel="auto" appearance="standard">
-    <mat-label>Price of Item</mat-label>
-    <input
-      class="no-spin"
-      type="number"
-      matInput
-      required
-      pattern="^\d*(\.\d{0,2})?$"
-      [(ngModel)]="itemPrice"
-      #itemPriceInput="ngModel"
-    />
-    <mat-error *ngIf="itemPriceInput.value">Two decimal places only</mat-error>
-    <mat-error *ngIf="!itemPriceInput.value">Required</mat-error>
-    <button
-      mat-button
-      *ngIf="itemPrice"
-      matSuffix
-      mat-icon-button
-      aria-label="Clear"
-      (click)="itemPrice = ''"
-    >
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-form-field>
-
-  <mat-form-field style="margin-top: 10px;">
-    <mat-label>Payer's Name</mat-label>
-    <mat-select #payerInput [(ngModel)]="payer">
-      <mat-option *ngFor="let eachPerson of people" [value]="eachPerson">
-        {{ eachPerson }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <div class="main-buttons">
-    <button
-      mat-flat-button
-      color="primary"
-      (click)="addItem(item, itemPrice, payerInput)"
-      [disabled]="
-        itemInput.invalid || itemPriceInput.invalid || payerInput.empty
-      "
-    >
-      Add Item
-    </button>
-
-    <button
-      mat-flat-button
-      color="warn"
-      (click)="clearAll()"
-      [matBadge]="items.length"
-    >
-      Clear All Items
-    </button>
-  </div>
-
-  <mat-accordion>
-    <mat-expansion-panel
-      *ngFor="let eachItem of items; let iOfItems = index"
-      hideToggle
-    >
-      <mat-expansion-panel-header>
-        <mat-panel-title>{{ eachItem.name }} </mat-panel-title>
-        <mat-panel-description>£{{ eachItem.price }}</mat-panel-description>
-        <mat-icon (click)="deleteItem(iOfItems)">clear</mat-icon>
-      </mat-expansion-panel-header>
-
-      <ul>
-        <li *ngFor="let eachPayer of eachItem.payers; let iOfPayer = index">
-          {{ eachPayer }}
-          <mat-icon (click)="deletePayerFromItem(iOfItems, iOfPayer)">
-            clear
-          </mat-icon>
-        </li>
-      </ul>
-
-      <mat-action-row>
-        <mat-form-field>
-          <mat-label>Name</mat-label>
-          <mat-select #personInput required>
-            <mat-option *ngFor="let eachPerson of people" [value]="eachPerson">
-              {{ eachPerson }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <button
-          mat-button
-          (click)="addPayerToItem(iOfItems, personInput, personInput)"
-          [disabled]="personInput.empty"
-        >
-          Add Payer
-        </button>
-      </mat-action-row>
-    </mat-expansion-panel>
-  </mat-accordion>
+<mat-form-field floatLabel="auto" appearance="standard">
+  <mat-label>Name of Item</mat-label>
+  <input
+    type="text"
+    matInput
+    required
+    [(ngModel)]="item"
+    #itemInput="ngModel"
+  />
+  <mat-error *ngIf="!itemInput.value">Required</mat-error>
   <button
-    class="calculate-button"
+    mat-button
+    *ngIf="item"
+    matSuffix
+    mat-icon-button
+    aria-label="Clear"
+    (click)="item = ''"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+
+<mat-form-field floatLabel="auto" appearance="standard">
+  <mat-label>Price of Item</mat-label>
+  <input
+    class="no-spin"
+    type="number"
+    matInput
+    required
+    pattern="^\d*(\.\d{0,2})?$"
+    [(ngModel)]="itemPrice"
+    #itemPriceInput="ngModel"
+  />
+  <mat-error *ngIf="itemPriceInput.value">Two decimal places only</mat-error>
+  <mat-error *ngIf="!itemPriceInput.value">Required</mat-error>
+  <button
+    mat-button
+    *ngIf="itemPrice"
+    matSuffix
+    mat-icon-button
+    aria-label="Clear"
+    (click)="itemPrice = ''"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+
+<mat-form-field style="margin-top: 10px;">
+  <mat-label>Payer's Name</mat-label>
+  <mat-select #payerInput [(ngModel)]="payer">
+    <mat-option *ngFor="let eachPerson of people" [value]="eachPerson">
+      {{ eachPerson }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<div class="main-buttons">
+  <button
     mat-flat-button
     color="primary"
-    (click)="calculate()"
-    [disabled]="items.length === 0"
+    (click)="addItem(item, itemPrice, payerInput)"
+    [disabled]="itemInput.invalid || itemPriceInput.invalid || payerInput.empty"
   >
-    Calculate
+    Add Item
   </button>
-</mat-card>
+
+  <button
+    mat-flat-button
+    color="warn"
+    (click)="clearAll()"
+    [matBadge]="items.length"
+  >
+    Clear All Items
+  </button>
+</div>
+
+<mat-accordion>
+  <mat-expansion-panel
+    *ngFor="let eachItem of items; let iOfItems = index"
+    hideToggle
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title>{{ eachItem.name }} </mat-panel-title>
+      <mat-panel-description>£{{ eachItem.price }}</mat-panel-description>
+      <mat-icon (click)="deleteItem(iOfItems)">clear</mat-icon>
+    </mat-expansion-panel-header>
+
+    <ul>
+      <li *ngFor="let eachPayer of eachItem.payers; let iOfPayer = index">
+        {{ eachPayer }}
+        <mat-icon (click)="deletePayerFromItem(iOfItems, iOfPayer)">
+          clear
+        </mat-icon>
+      </li>
+    </ul>
+
+    <mat-action-row>
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <mat-select #personInput required>
+          <mat-option *ngFor="let eachPerson of people" [value]="eachPerson">
+            {{ eachPerson }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button
+        mat-button
+        (click)="addPayerToItem(iOfItems, personInput, personInput)"
+        [disabled]="personInput.empty"
+      >
+        Add Payer
+      </button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<button
+  class="calculate-button"
+  mat-flat-button
+  color="primary"
+  (click)="calculate()"
+  [disabled]="items.length === 0"
+>
+  Calculate
+</button>
