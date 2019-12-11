@@ -71,11 +71,21 @@
         <mat-panel-description>£{{ eachItem.price }}</mat-panel-description>
         <mat-icon (click)="deleteItem(i)">clear</mat-icon>
       </mat-expansion-panel-header>
+
       <ul>
         <li *ngFor="let eachPerson of eachItem.payers">{{ eachPerson }}</li>
       </ul>
+
       <mat-action-row>
-        <button mat-button>Button</button>
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let eachPerson of people" [value]="eachPerson">
+              {{ eachPerson }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-button (click)="addPayer()">Add Payer</button>
       </mat-action-row>
     </mat-expansion-panel>
   </mat-accordion>

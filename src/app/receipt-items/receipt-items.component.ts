@@ -31,6 +31,8 @@ export class ReceiptItemsComponent implements OnInit {
     this.itemPrice = null;
   }
 
+  addPayer() {}
+
   deleteItem(index: number) {
     this.items.splice(index, 1);
   }
