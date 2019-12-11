@@ -11,6 +11,7 @@
       #nameInput="ngModel"
       (keyup.enter)="addPerson(name)"
     />
+    <mat-error *ngIf="!nameInput.value">Required</mat-error>
     <button
       mat-button
       *ngIf="name"
@@ -23,16 +24,16 @@
     </button>
   </mat-form-field>
 
-  <button
-    mat-flat-button
-    color="primary"
-    (click)="addPerson(name)"
-    [disabled]="nameInput.invalid"
-  >
-    Add Person
-  </button>
+  <div class="main-buttons">
+    <button
+      mat-flat-button
+      color="primary"
+      (click)="addPerson(name)"
+      [disabled]="nameInput.invalid"
+    >
+      Add Person
+    </button>
 
-  <div>
     <button
       mat-flat-button
       color="warn"

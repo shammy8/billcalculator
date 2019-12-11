@@ -1,9 +1,5 @@
 mat-card {
-  max-width: 350px;
-}
-
-button {
-  margin-left: 10px;
+  width: 350px;
 }
 
 mat-form-field {
@@ -12,4 +8,10 @@ mat-form-field {
 
 mat-icon {
   cursor: pointer;
+}
+
+.main-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
 }

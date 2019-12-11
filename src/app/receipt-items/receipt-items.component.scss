@@ -2,10 +2,6 @@ mat-card {
   max-width: 350px;
 }
 
-button {
-  margin-left: 10px;
-}
-
 mat-form-field {
   width: 200px;
 }
@@ -21,6 +17,9 @@ mat-icon {
   -moz-appearance: textfield !important;
 }
 
-.clear-all-button-container {
+.main-buttons {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 15px;
+  margin-top: 15px;
 }

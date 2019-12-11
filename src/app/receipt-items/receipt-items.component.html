@@ -10,6 +10,7 @@
       [(ngModel)]="item"
       #itemInput="ngModel"
     />
+    <mat-error *ngIf="!itemInput.value">Required</mat-error>
     <button
       mat-button
       *ngIf="item"
@@ -29,9 +30,12 @@
       type="number"
       matInput
       required
+      pattern="^\d*(\.\d{0,2})?$"
       [(ngModel)]="itemPrice"
       #itemPriceInput="ngModel"
     />
+    <mat-error *ngIf="itemPriceInput.value">Two decimal places only</mat-error>
+    <mat-error *ngIf="!itemPriceInput.value">Required</mat-error>
     <button
       mat-button
       *ngIf="itemPrice"
@@ -44,16 +48,16 @@
     </button>
   </mat-form-field>
 
-  <button
-    mat-flat-button
-    color="primary"
-    (click)="addItem(item, itemPrice)"
-    [disabled]="itemInput.invalid || itemPriceInput.invalid"
-  >
-    Add Item
-  </button>
+  <div class="main-buttons">
+    <button
+      mat-flat-button
+      color="primary"
+      (click)="addItem(item, itemPrice)"
+      [disabled]="itemInput.invalid || itemPriceInput.invalid"
+    >
+      Add Item
+    </button>
 
-  <div class="clear-all-button-container">
     <button
       mat-flat-button
       color="warn"
