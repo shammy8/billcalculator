@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { MatDialog } from '@angular/material';
+import { DialogAlreadyExistsComponent } from '../dialog-already-exists/dialog-already-exists.component';
 import { PeopleService } from '../people.service';
 import { Item } from '../models/Item';
 
@@ -14,7 +15,7 @@ export class ReceiptItemsComponent implements OnInit {
   item: string;
   itemPrice: number;
 
-  constructor(private peopleService: PeopleService) {}
+  constructor(private peopleService: PeopleService, public dialog: MatDialog) {}
 
   ngOnInit() {
     this.people = this.peopleService.people;
@@ -31,7 +32,13 @@ export class ReceiptItemsComponent implements OnInit {
     this.itemPrice = null;
   }
 
-  addPayer() {}
+  addPayerToItem(index: number, payer: HTMLOptionElement) {
+    if (this.items[index].payers.includes(payer.value)) {
+      this.dialog.open(DialogAlreadyExistsComponent, { data: payer.value });
+    } else {
+      this.items[index].payers.push(payer.value);
+    }
+  }
 
   deleteItem(index: number) {
     this.items.splice(index, 1);

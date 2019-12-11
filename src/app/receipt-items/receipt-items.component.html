@@ -79,13 +79,15 @@
       <mat-action-row>
         <mat-form-field>
           <mat-label>Name</mat-label>
-          <mat-select>
+          <mat-select #personInput>
             <mat-option *ngFor="let eachPerson of people" [value]="eachPerson">
               {{ eachPerson }}
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <button mat-button (click)="addPayer()">Add Payer</button>
+        <button mat-button (click)="addPayerToItem(i, personInput)">
+          Add Payer
+        </button>
       </mat-action-row>
     </mat-expansion-panel>
   </mat-accordion>
