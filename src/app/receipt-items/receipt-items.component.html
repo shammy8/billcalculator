@@ -118,4 +118,13 @@
       </mat-action-row>
     </mat-expansion-panel>
   </mat-accordion>
+  <button
+    class="calculate-button"
+    mat-flat-button
+    color="primary"
+    (click)="calculate()"
+    [disabled]="items.length === 0"
+  >
+    Calculate
+  </button>
 </mat-card>

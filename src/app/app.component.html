@@ -1,4 +1,13 @@
 <div class="main">
-  <app-receipt-items></app-receipt-items>
   <app-people></app-people>
+  <app-receipt-items
+    (sendingItemsToApp)="calculate($event)"
+  ></app-receipt-items>
+
+  <mat-card>
+    <mat-card-title>How much to pay</mat-card-title>
+    <mat-list>
+      <mat-list-item *ngFor="let person of people">{{ person }}</mat-list-item>
+    </mat-list>
+  </mat-card>
 </div>

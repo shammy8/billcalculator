@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material';
+
 import { DialogAlreadyExistsComponent } from '../dialog-already-exists/dialog-already-exists.component';
 import { PeopleService } from '../people.service';
 import { Item } from '../models/Item';
@@ -16,6 +17,8 @@ export class ReceiptItemsComponent implements OnInit {
   itemPrice: number;
   payer: string;
 
+  @Output() sendingItemsToApp = new EventEmitter<Item[]>();
+
   constructor(private peopleService: PeopleService, public dialog: MatDialog) {}
 
   ngOnInit() {
@@ -27,7 +30,7 @@ export class ReceiptItemsComponent implements OnInit {
     ];
   }
 
-  addItem(nameIn: string, priceIn: number, payerIn: string) {
+  addItem(nameIn: string, priceIn: number, payerIn: HTMLSelectElement) {
     this.items.push({ name: nameIn, price: priceIn, payers: [payerIn.value] });
     this.item = '';
     this.itemPrice = null;
@@ -52,5 +55,9 @@ export class ReceiptItemsComponent implements OnInit {
 
   clearAll() {
     this.items.splice(0, this.items.length);
+  }
+
+  calculate() {
+    this.sendingItemsToApp.emit(this.items);
   }
 }
