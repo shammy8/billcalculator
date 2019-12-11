@@ -48,12 +48,23 @@
     </button>
   </mat-form-field>
 
+  <mat-form-field style="margin-top: 10px;">
+    <mat-label>Payer's Name</mat-label>
+    <mat-select #payerInput [(ngModel)]="payer">
+      <mat-option *ngFor="let eachPerson of people" [value]="eachPerson">
+        {{ eachPerson }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
   <div class="main-buttons">
     <button
       mat-flat-button
       color="primary"
-      (click)="addItem(item, itemPrice)"
-      [disabled]="itemInput.invalid || itemPriceInput.invalid"
+      (click)="addItem(item, itemPrice, payerInput)"
+      [disabled]="
+        itemInput.invalid || itemPriceInput.invalid || payerInput.empty
+      "
     >
       Add Item
     </button>
@@ -91,13 +102,17 @@
       <mat-action-row>
         <mat-form-field>
           <mat-label>Name</mat-label>
-          <mat-select #personInput>
+          <mat-select #personInput required>
             <mat-option *ngFor="let eachPerson of people" [value]="eachPerson">
               {{ eachPerson }}
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <button mat-button (click)="addPayerToItem(iOfItems, personInput)">
+        <button
+          mat-button
+          (click)="addPayerToItem(iOfItems, personInput, personInput)"
+          [disabled]="personInput.empty"
+        >
           Add Payer
         </button>
       </mat-action-row>

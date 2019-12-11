@@ -14,6 +14,7 @@ export class ReceiptItemsComponent implements OnInit {
   items: Item[];
   item: string;
   itemPrice: number;
+  payer: string;
 
   constructor(private peopleService: PeopleService, public dialog: MatDialog) {}
 
@@ -26,10 +27,11 @@ export class ReceiptItemsComponent implements OnInit {
     ];
   }
 
-  addItem(nameIn: string, priceIn: number) {
-    this.items.push({ name: nameIn, price: priceIn, payers: [] });
+  addItem(nameIn: string, priceIn: number, payerIn: string) {
+    this.items.push({ name: nameIn, price: priceIn, payers: [payerIn.value] });
     this.item = '';
     this.itemPrice = null;
+    this.payer = null;
   }
 
   addPayerToItem(index: number, payer: HTMLOptionElement) {
