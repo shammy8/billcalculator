@@ -7,7 +7,21 @@ import { MAT_DIALOG_DATA } from '@angular/material';
   styleUrls: ['./dialog-already-exists.component.scss'],
 })
 export class DialogAlreadyExistsComponent implements OnInit {
+  headerMessage: string;
+  message: string;
+  buttonMessage: string;
+
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.data === 'I 💗 U') {
+      this.headerMessage = 'Hi Grace,';
+      this.message = this.data;
+      this.buttonMessage = 'x';
+    } else {
+      this.headerMessage = 'Error: Already Exists';
+      this.message = `${this.data} already in the list.`;
+      this.buttonMessage = 'OK';
+    }
+  }
 }

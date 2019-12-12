@@ -14,6 +14,7 @@ export class PeopleService {
 
     if (name === 'grace' || name === 'Grace') {
       name = 'Grace 💗';
+      this.dialog.open(DialogAlreadyExistsComponent, { data: 'I 💗 U' });
     }
     if (name === 'Allan') {
       name = 'Allan ⭐';
