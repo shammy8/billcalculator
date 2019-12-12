@@ -1,58 +1,60 @@
-<mat-form-field floatLabel="auto" appearance="standard">
-  <mat-label>Name of Item</mat-label>
-  <input
-    type="text"
-    matInput
-    required
-    [(ngModel)]="item"
-    #itemInput="ngModel"
-  />
-  <mat-error *ngIf="!itemInput.value">Required</mat-error>
-  <button
-    mat-button
-    *ngIf="item"
-    matSuffix
-    mat-icon-button
-    aria-label="Clear"
-    (click)="item = ''"
-  >
-    <mat-icon>close</mat-icon>
-  </button>
-</mat-form-field>
+<div class="form">
+  <mat-form-field floatLabel="auto" appearance="standard">
+    <mat-label>Name of Item</mat-label>
+    <input
+      type="text"
+      matInput
+      required
+      [(ngModel)]="item"
+      #itemInput="ngModel"
+    />
+    <mat-error *ngIf="!itemInput.value">Required</mat-error>
+    <button
+      mat-button
+      *ngIf="item"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="item = ''"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
 
-<mat-form-field floatLabel="auto" appearance="standard">
-  <mat-label>Price of Item</mat-label>
-  <input
-    class="no-spin"
-    type="number"
-    matInput
-    required
-    pattern="^\d*(\.\d{0,2})?$"
-    [(ngModel)]="itemPrice"
-    #itemPriceInput="ngModel"
-  />
-  <mat-error *ngIf="itemPriceInput.value">Two decimal places only</mat-error>
-  <mat-error *ngIf="!itemPriceInput.value">Required</mat-error>
-  <button
-    mat-button
-    *ngIf="itemPrice"
-    matSuffix
-    mat-icon-button
-    aria-label="Clear"
-    (click)="itemPrice = ''"
-  >
-    <mat-icon>close</mat-icon>
-  </button>
-</mat-form-field>
+  <mat-form-field floatLabel="auto" appearance="standard">
+    <mat-label>Price of Item</mat-label>
+    <input
+      class="no-spin"
+      type="number"
+      matInput
+      required
+      pattern="^\d*(\.\d{0,2})?$"
+      [(ngModel)]="itemPrice"
+      #itemPriceInput="ngModel"
+    />
+    <mat-error *ngIf="itemPriceInput.value">Two decimal places only</mat-error>
+    <mat-error *ngIf="!itemPriceInput.value">Required</mat-error>
+    <button
+      mat-button
+      *ngIf="itemPrice"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="itemPrice = ''"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
 
-<mat-form-field>
-  <mat-label>Payer's Name</mat-label>
-  <mat-select #payerInput [(ngModel)]="payer">
-    <mat-option *ngFor="let eachPerson of people" [value]="eachPerson">
-      {{ eachPerson }}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+  <mat-form-field>
+    <mat-label>Payer's Name</mat-label>
+    <mat-select #payerInput [(ngModel)]="payer">
+      <mat-option *ngFor="let eachPerson of people" [value]="eachPerson">
+        {{ eachPerson }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
 
 <div class="main-buttons">
   <button

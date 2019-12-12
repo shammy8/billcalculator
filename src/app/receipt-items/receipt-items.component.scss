@@ -1,3 +1,9 @@
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: end;
+}
+
 mat-card {
   max-width: 350px;
 }
@@ -26,6 +32,12 @@ mat-icon {
 }
 
 .calculate-button {
-  width: 100%;
   margin-top: 15px;
+}
+
+@media only screen and (max-width: 800px) {
+  .form {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
 }
