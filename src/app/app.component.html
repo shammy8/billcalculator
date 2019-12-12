@@ -26,9 +26,20 @@
           <mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="items">
+          <mat-header-cell *matHeaderCellDef>Items</mat-header-cell>
+          <mat-cell *matCellDef="let element"
+            ><ul>
+              <li *ngFor="let item of element.items">{{ item }}</li>
+            </ul></mat-cell
+          >
+        </ng-container>
+
         <ng-container matColumnDef="amount">
-          <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
-          <mat-cell *matCellDef="let element">{{ element.amount }}</mat-cell>
+          <mat-header-cell *matHeaderCellDef>Amount Due</mat-header-cell>
+          <mat-cell *matCellDef="let element"
+            >£{{ element.amount | number: '1.2-2' }}</mat-cell
+          >
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

@@ -12,12 +12,8 @@ export class AppComponent implements OnInit {
   title = 'Bill Calculator';
   items: Item[];
   people: string[];
-  amountToPay = [
-    // { name: 'Allan', amount: '19.98' },
-    // { name: 'Adam', amount: '29.98' },
-    // { name: 'Arron', amount: '39.98' },
-  ];
-  displayedColumns: string[] = ['name', 'amount'];
+  amountToPay = [];
+  displayedColumns: string[] = ['name', 'items', 'amount'];
 
   constructor(private peopleService: PeopleService) {}
 
@@ -34,13 +30,17 @@ export class AppComponent implements OnInit {
     this.items = items;
 
     this.amountToPay = this.people.map(person => {
-      let amountToPay = 0;
+      let totalAmountDue = 0;
+      let itemsPaidFor = [];
       this.items.forEach(item => {
         if (item.payers.includes(person)) {
-          amountToPay += item.price / item.payers.length;
+          totalAmountDue += item.price / item.payers.length;
+          itemsPaidFor = [...itemsPaidFor, item.name];
         }
       });
-      return { name: person, amount: amountToPay };
+      return { name: person, items: itemsPaidFor, amount: totalAmountDue };
     });
+
+    console.log(this.amountToPay);
   }
 }
