@@ -17,3 +17,7 @@ mat-card {
 button {
   margin-left: 10px;
 }
+
+::ng-deep input.mat-input-element {
+  color: white;
+}
