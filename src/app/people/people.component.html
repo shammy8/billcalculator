@@ -22,22 +22,15 @@
   </button>
 </mat-form-field>
 
-<button
-  mat-flat-button
-  color="primary"
-  (click)="addPerson(name)"
-  [disabled]="nameInput.invalid"
->
-  Add Person
-</button>
-
-<div class="clear-button-and-list">
-  <mat-list>
-    <mat-list-item *ngFor="let person of people; let i = index">
-      <p>{{ person }}</p>
-      <mat-icon (click)="deleteName(i)">clear</mat-icon>
-    </mat-list-item>
-  </mat-list>
+<div class="buttons">
+  <button
+    mat-flat-button
+    color="primary"
+    (click)="addPerson(name)"
+    [disabled]="nameInput.invalid"
+  >
+    Add Person
+  </button>
 
   <button
     mat-flat-button
@@ -48,3 +41,11 @@
     Clear All Names
   </button>
 </div>
+
+<mat-list>
+  <mat-list-item *ngFor="let person of people; let i = index">
+    <mat-divider></mat-divider>
+    <p>{{ person }}</p>
+    <mat-icon (click)="deleteName(i)">clear</mat-icon>
+  </mat-list-item>
+</mat-list>

@@ -106,9 +106,10 @@
         </mat-select>
       </mat-form-field>
       <button
-        mat-button
+        mat-flat-button
         (click)="addPayerToItem(iOfItems, personInput, personInput)"
         [disabled]="personInput.empty"
+        color="accent"
       >
         Add Payer
       </button>

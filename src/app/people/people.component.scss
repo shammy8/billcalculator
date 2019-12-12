@@ -3,16 +3,13 @@ mat-icon {
   color: white;
 }
 
-button {
-  margin-left: 10px;
-  height: 40px;
-  width: 150px;
+.buttons {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
 }
 
-.clear-button-and-list {
-  display: grid;
-  grid-template-columns: 200px auto;
-  align-items: end;
+mat-list {
   margin-bottom: 20px;
 }
 
