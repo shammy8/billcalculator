@@ -2,6 +2,15 @@
   <mat-horizontal-stepper linear>
     <mat-step label="Input People" [completed]="moreThan0People()">
       <app-people></app-people>
+      <button
+        class="inputitems-button"
+        mat-flat-button
+        color="primary"
+        matStepperNext
+        [disabled]="!moreThan0People()"
+      >
+        Input Items
+      </button>
     </mat-step>
 
     <mat-step label="Input Items" [completed]="true">
@@ -10,7 +19,7 @@
       ></app-receipt-items>
     </mat-step>
 
-    <mat-step label="Pay" completed="true">
+    <mat-step label="Calculate" completed="true">
       <mat-table [dataSource]="amountToPay">
         <ng-container matColumnDef="name">
           <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>

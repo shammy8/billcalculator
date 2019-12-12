@@ -1,17 +1,6 @@
-// git
-// mat-horizontal-stepper {
-//   min-width: 98%;
-//   min-height: 90vh;
-//   margin: auto;
-// }
-
 mat-step {
   display: flex;
   justify-content: center;
-}
-
-mat-card {
-  width: 350px;
 }
 
 button {
@@ -20,4 +9,10 @@ button {
 
 ::ng-deep input.mat-input-element {
   color: white;
+}
+
+.inputitems-button {
+  margin-left: 210px;
+  width: 150px;
+  height: 40px;
 }
