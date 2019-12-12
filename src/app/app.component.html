@@ -1,16 +1,16 @@
 <div class="main">
-  <mat-horizontal-stepper>
-    <mat-step label="Input People">
+  <mat-horizontal-stepper linear>
+    <mat-step label="Input People" [completed]="moreThan0People()">
       <app-people></app-people>
     </mat-step>
 
-    <mat-step label="Input Items">
+    <mat-step label="Input Items" [completed]="true">
       <app-receipt-items
         (sendingItemsToApp)="calculate($event)"
       ></app-receipt-items>
     </mat-step>
 
-    <mat-step label="Pay">
+    <mat-step label="Pay" completed="true">
       <mat-table [dataSource]="amountToPay">
         <ng-container matColumnDef="name">
           <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>

@@ -6,7 +6,7 @@ import { DialogAlreadyExistsComponent } from './dialog-already-exists/dialog-alr
   providedIn: 'root',
 })
 export class PeopleService {
-  people: string[] = ['Allan', 'Grace', 'Samuel'];
+  people: string[] = ['Allan', 'Samuel'];
   constructor(public dialog: MatDialog) {}
 
   addPerson(name: string) {

@@ -26,6 +26,11 @@ export class AppComponent implements OnInit {
     ];
   }
 
+  // if there are people in the people service it will return true allowing user to go to 2nd step of stepper
+  moreThan0People() {
+    return this.peopleService.people.length > 0 ? true : false;
+  }
+
   calculate(items: Item[]) {
     this.items = items;
     console.log(this.items);
