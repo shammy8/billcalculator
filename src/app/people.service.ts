@@ -6,10 +6,18 @@ import { DialogAlreadyExistsComponent } from './dialog-already-exists/dialog-alr
   providedIn: 'root',
 })
 export class PeopleService {
-  people: string[] = ['Allan', 'Samuel', 'Grace'];
+  people: string[] = ['Allan ⭐', 'Samuel'];
   constructor(public dialog: MatDialog) {}
 
   addPerson(name: string) {
+    name = name.trim();
+
+    if (name === 'grace' || name === 'Grace') {
+      name = 'Grace 💗';
+    }
+    if (name === 'Allan') {
+      name = 'Allan ⭐';
+    }
     if (this.people.includes(name)) {
       this.dialog.open(DialogAlreadyExistsComponent, { data: name });
     } else {
