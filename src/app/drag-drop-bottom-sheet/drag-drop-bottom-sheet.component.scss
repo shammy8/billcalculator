@@ -1,0 +1,20 @@
+.both-arrays {
+  display: grid;
+  grid-template-columns: 1fr auto 200px auto 1fr;
+}
+
+mat-list-item {
+  cursor: pointer;
+}
+
+.middle {
+  padding: 30px;
+  align-self: center;
+  text-align: center;
+}
+
+button {
+  display: block;
+  min-width: 100px;
+  margin: 20px auto 15px auto;
+}

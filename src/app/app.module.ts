@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AppComponent } from './app.component';
 import { PeopleComponent } from './people/people.component';
@@ -27,6 +28,7 @@ import { DragDropBottomSheetComponent } from './drag-drop-bottom-sheet/drag-drop
     MaterialModule,
     FormsModule,
     HttpClientModule,
+    DragDropModule,
   ],
   providers: [PeopleService],
   bootstrap: [AppComponent],

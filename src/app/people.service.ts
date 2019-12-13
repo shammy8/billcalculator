@@ -10,7 +10,7 @@ import { DragDropBottomSheetComponent } from './drag-drop-bottom-sheet/drag-drop
 })
 export class PeopleService {
   people: string[] = ['Allan ⭐', 'Samuel'];
-  fetchedNames: string[] = [];
+  // fetchedNames: string[] = [];
 
   constructor(
     public dialog: MatDialog,
@@ -46,10 +46,10 @@ export class PeopleService {
         'https://bill-calculator-eaac9.firebaseio.com/friends.json'
       )
       .subscribe(response => {
-        this.fetchedNames = response;
-        console.log(this.fetchedNames);
+        //this.fetchedNames = response;
+        //console.log(this.fetchedNames);
         this.bottomSheet.open(DragDropBottomSheetComponent, {
-          data: this.fetchedNames,
+          data: response,
         });
       });
   }

@@ -1,5 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material';
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-drag-drop-bottom-sheet',
@@ -7,7 +12,26 @@ import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material';
   styleUrls: ['./drag-drop-bottom-sheet.component.scss'],
 })
 export class DragDropBottomSheetComponent implements OnInit {
+  selectedNames: string[] = ['Banana'];
+
   constructor(@Inject(MAT_BOTTOM_SHEET_DATA) public data: any) {}
 
   ngOnInit() {}
+
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer !== event.container) {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    } else {
+      moveItemInArray(this.data, event.previousIndex, event.currentIndex);
+    }
+  }
+
+  onClick() {
+    console.log(this.selectedNames);
+  }
 }
