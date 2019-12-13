@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { DialogAlreadyExistsComponent } from './dialog-already-exists/dialog-already-exists.component';
 import { HttpClient } from '@angular/common/http';
+import { MatBottomSheet } from '@angular/material';
+import { DragDropBottomSheetComponent } from './drag-drop-bottom-sheet/drag-drop-bottom-sheet.component';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +12,11 @@ export class PeopleService {
   people: string[] = ['Allan ⭐', 'Samuel'];
   fetchedNames: string[] = [];
 
-  constructor(public dialog: MatDialog, private http: HttpClient) {}
+  constructor(
+    public dialog: MatDialog,
+    private http: HttpClient,
+    private bottomSheet: MatBottomSheet
+  ) {}
 
   addPerson(name: string) {
     name = name.trim();
@@ -42,6 +48,9 @@ export class PeopleService {
       .subscribe(response => {
         this.fetchedNames = response;
         console.log(this.fetchedNames);
+        this.bottomSheet.open(DragDropBottomSheetComponent, {
+          data: this.fetchedNames,
+        });
       });
   }
 

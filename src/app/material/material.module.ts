@@ -14,6 +14,7 @@ import {
   MatSelectModule,
   MatTableModule,
   MatStepperModule,
+  MatBottomSheetModule,
 } from '@angular/material';
 
 const MaterialComponents = [
@@ -31,6 +32,7 @@ const MaterialComponents = [
   MatSelectModule,
   MatTableModule,
   MatStepperModule,
+  MatBottomSheetModule,
 ];
 
 @NgModule({

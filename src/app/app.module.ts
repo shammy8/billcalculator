@@ -11,6 +11,7 @@ import { PeopleComponent } from './people/people.component';
 import { PeopleService } from './people.service';
 import { DialogAlreadyExistsComponent } from './dialog-already-exists/dialog-already-exists.component';
 import { ReceiptItemsComponent } from './receipt-items/receipt-items.component';
+import { DragDropBottomSheetComponent } from './drag-drop-bottom-sheet/drag-drop-bottom-sheet.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ReceiptItemsComponent } from './receipt-items/receipt-items.component';
     PeopleComponent,
     DialogAlreadyExistsComponent,
     ReceiptItemsComponent,
+    DragDropBottomSheetComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,6 +30,6 @@ import { ReceiptItemsComponent } from './receipt-items/receipt-items.component';
   ],
   providers: [PeopleService],
   bootstrap: [AppComponent],
-  entryComponents: [DialogAlreadyExistsComponent],
+  entryComponents: [DialogAlreadyExistsComponent, DragDropBottomSheetComponent],
 })
 export class AppModule {}
