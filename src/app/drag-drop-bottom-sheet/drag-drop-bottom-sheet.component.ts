@@ -21,6 +21,14 @@ export class DragDropBottomSheetComponent implements OnInit {
 
   ngOnInit() {
     this.selectedNames = [...this.data.addedNames];
+
+    const tempFetchnames = [];
+    for (let i = 0; i < this.data.fetchedNames.length; i++) {
+      if (!this.selectedNames.includes(this.data.fetchedNames[i])) {
+        tempFetchnames.push(this.data.fetchedNames[i]);
+      }
+    }
+    this.data.fetchedNames = [...tempFetchnames];
   }
 
   drop(event: CdkDragDrop<string[]>) {
