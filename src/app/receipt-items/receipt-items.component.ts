@@ -24,7 +24,7 @@ export class ReceiptItemsComponent implements OnInit {
   ngOnInit() {
     this.people = this.peopleService.people;
     this.items = [
-      { name: 'Steak', price: 23.99, payers: ['Allan', 'Grace'] },
+      { name: 'Steak', price: 23.99, payers: ['Allan'] },
       { name: 'Burger', price: 12.99, payers: ['Samuel'] },
       { name: 'Coke', price: 2.99, payers: ['Allan'] },
     ];

@@ -1,12 +1,12 @@
 <div class="both-arrays">
   <mat-list
     cdkDropList
-    [cdkDropListData]="data"
+    [cdkDropListData]="data.fetchedNames"
     (cdkDropListDropped)="drop($event)"
     [cdkDropListConnectedTo]="chosenNamesRef"
     #allNamesRef="cdkDropList"
   >
-    <mat-list-item cdkDrag *ngFor="let name of data">
+    <mat-list-item cdkDrag *ngFor="let name of data.fetchedNames">
       {{ name }}
     </mat-list-item>
   </mat-list>

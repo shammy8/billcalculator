@@ -49,7 +49,7 @@ export class PeopleService {
         // this.fetchedNames = response;
         // console.log(this.fetchedNames);
         const sheet = this.bottomSheet.open(DragDropBottomSheetComponent, {
-          data: response,
+          data: { fetchedNames: response, addedNames: this.people },
         });
         sheet.afterDismissed().subscribe(selectedNames => {
           for (const name of selectedNames) {

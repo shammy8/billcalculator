@@ -19,7 +19,9 @@ export class DragDropBottomSheetComponent implements OnInit {
     private bottomSheetRef: MatBottomSheetRef<DragDropBottomSheetComponent>
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.selectedNames = [...this.data.addedNames];
+  }
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer !== event.container) {
@@ -30,7 +32,11 @@ export class DragDropBottomSheetComponent implements OnInit {
         event.currentIndex
       );
     } else {
-      moveItemInArray(this.data, event.previousIndex, event.currentIndex);
+      moveItemInArray(
+        this.data.fetchedNames,
+        event.previousIndex,
+        event.currentIndex
+      );
     }
   }
 
