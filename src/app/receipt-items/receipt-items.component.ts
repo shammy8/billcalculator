@@ -30,11 +30,25 @@ export class ReceiptItemsComponent implements OnInit {
     ];
   }
 
-  addItem(nameIn: string, priceIn: number, payerIn: HTMLSelectElement) {
-    this.items.push({ name: nameIn, price: priceIn, payers: [payerIn.value] });
+  addItem(
+    nameIn: string,
+    priceIn: number,
+    payerIn: HTMLSelectElement,
+    nameRef,
+    priceRef
+  ) {
+    this.items.push({
+      name: nameIn,
+      price: priceIn,
+      payers: [payerIn.value],
+    });
+
     this.item = '';
     this.itemPrice = null;
     this.payer = null;
+
+    nameRef.reset();
+    priceRef.reset();
   }
 
   addPayerToItem(index: number, payer: HTMLOptionElement) {

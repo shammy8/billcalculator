@@ -60,7 +60,7 @@
   <button
     mat-flat-button
     color="primary"
-    (click)="addItem(item, itemPrice, payerInput)"
+    (click)="addItem(item, itemPrice, payerInput, itemInput, itemPriceInput)"
     [disabled]="itemInput.invalid || itemPriceInput.invalid || payerInput.empty"
   >
     Add Item

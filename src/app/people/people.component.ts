@@ -16,9 +16,10 @@ export class PeopleComponent implements OnInit {
     this.people = this.peopleService.people;
   }
 
-  addPerson(name: string) {
+  addPerson(name: string, nameRef) {
     this.peopleService.addPerson(name);
     this.name = '';
+    nameRef.reset();
   }
 
   deleteName(index: number) {
