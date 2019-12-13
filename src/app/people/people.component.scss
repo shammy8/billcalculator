@@ -22,3 +22,13 @@ mat-form-field {
   grid-template-columns: auto auto;
   grid-column-gap: 10px;
 }
+
+@media only screen and (max-width: 460px) {
+  .buttons {
+    display: block;
+  }
+
+  .two-buttons {
+    margin-bottom: 20px;
+  }
+}
