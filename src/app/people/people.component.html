@@ -23,18 +23,20 @@
 </mat-form-field>
 
 <div class="buttons">
-  <button
-    mat-flat-button
-    color="primary"
-    (click)="addPerson(name, nameInput)"
-    [disabled]="nameInput.invalid"
-  >
-    Add Person
-  </button>
+  <div class="two-buttons">
+    <button
+      mat-flat-button
+      color="primary"
+      (click)="addPerson(name, nameInput)"
+      [disabled]="nameInput.invalid"
+    >
+      Add Person
+    </button>
 
-  <button mat-flat-button color="primary" (click)="fetchNames()">
-    Fetch Names
-  </button>
+    <button mat-flat-button color="primary" (click)="fetchNames()">
+      Fetch Names
+    </button>
+  </div>
 
   <button
     mat-flat-button

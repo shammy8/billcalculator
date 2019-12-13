@@ -53,6 +53,8 @@ export class PeopleService {
             if (!this.people.includes(name)) {
               this.people.push(name);
             }
+            // this.people = selectedNames;
+            // console.log(selectedNames);
           }
         });
       });

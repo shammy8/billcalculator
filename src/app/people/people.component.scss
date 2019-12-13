@@ -16,3 +16,9 @@ mat-list {
 mat-form-field {
   width: 200px;
 }
+
+.two-buttons {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-column-gap: 10px;
+}
