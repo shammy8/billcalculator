@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { DialogAlreadyExistsComponent } from './dialog-already-exists/dialog-already-exists.component';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PeopleService {
   people: string[] = ['Allan ⭐', 'Samuel'];
-  constructor(public dialog: MatDialog) {}
+  fetchedNames: string[] = [];
+
+  constructor(public dialog: MatDialog, private http: HttpClient) {}
 
   addPerson(name: string) {
     name = name.trim();
@@ -29,6 +32,17 @@ export class PeopleService {
   deleteName(index: number) {
     console.log(index);
     this.people.splice(index, 1);
+  }
+
+  fetchNames() {
+    return this.http
+      .get<string[]>(
+        'https://bill-calculator-eaac9.firebaseio.com/friends.json'
+      )
+      .subscribe(response => {
+        this.fetchedNames = response;
+        console.log(this.fetchedNames);
+      });
   }
 
   clearAll() {
