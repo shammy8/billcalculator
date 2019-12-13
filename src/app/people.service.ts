@@ -52,7 +52,9 @@ export class PeopleService {
           data: response,
         });
         sheet.afterDismissed().subscribe(selectedNames => {
-          this.people.unshift(selectedNames[0]);
+          for (const name of selectedNames) {
+            this.people.push(name);
+          }
         });
       });
   }
