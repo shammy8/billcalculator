@@ -14,7 +14,10 @@ import {
 export class DragDropBottomSheetComponent implements OnInit {
   selectedNames: string[] = ['Banana'];
 
-  constructor(@Inject(MAT_BOTTOM_SHEET_DATA) public data: any) {}
+  constructor(
+    @Inject(MAT_BOTTOM_SHEET_DATA) public data: any,
+    private bottomSheetRef: MatBottomSheetRef<DragDropBottomSheetComponent>
+  ) {}
 
   ngOnInit() {}
 
@@ -32,6 +35,6 @@ export class DragDropBottomSheetComponent implements OnInit {
   }
 
   onClick() {
-    console.log(this.selectedNames);
+    this.bottomSheetRef.dismiss(this.selectedNames);
   }
 }

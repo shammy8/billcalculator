@@ -46,10 +46,13 @@ export class PeopleService {
         'https://bill-calculator-eaac9.firebaseio.com/friends.json'
       )
       .subscribe(response => {
-        //this.fetchedNames = response;
-        //console.log(this.fetchedNames);
-        this.bottomSheet.open(DragDropBottomSheetComponent, {
+        // this.fetchedNames = response;
+        // console.log(this.fetchedNames);
+        const sheet = this.bottomSheet.open(DragDropBottomSheetComponent, {
           data: response,
+        });
+        sheet.afterDismissed().subscribe(selectedNames => {
+          this.people.unshift(selectedNames[0]);
         });
       });
   }
