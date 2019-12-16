@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { PeopleService } from '../people.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-people',
@@ -17,10 +18,9 @@ export class PeopleComponent implements OnInit {
     this.people = this.peopleService.people;
   }
 
-  addPerson(name: string, nameRef) {
+  addPerson(name: string, formRef: NgForm) {
     this.peopleService.addPerson(name);
-    this.name = '';
-    nameRef.reset();
+    formRef.resetForm();
   }
 
   deleteName(index: number) {

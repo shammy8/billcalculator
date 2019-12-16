@@ -1,52 +1,55 @@
-<mat-form-field floatLabel="auto" appearance="standard">
-  <mat-label>Name</mat-label>
-  <input
-    type="text"
-    matInput
-    required
-    [(ngModel)]="name"
-    #nameInput="ngModel"
-    (keyup.enter)="addPerson(name)"
-  />
-  <mat-error *ngIf="!nameInput.value">Required</mat-error>
-  <button
-    class="addperson-button"
-    mat-button
-    *ngIf="name"
-    matSuffix
-    mat-icon-button
-    aria-label="Clear"
-    (click)="name = ''"
-  >
-    <mat-icon>close</mat-icon>
-  </button>
-</mat-form-field>
+<form (ngSubmit)="addPerson(name, f)" #f="ngForm">
+  <mat-form-field floatLabel="auto" appearance="standard">
+    <mat-label>Name</mat-label>
+    <input
+      type="text"
+      name="personName"
+      matInput
+      required
+      [(ngModel)]="name"
+      #nameInput="ngModel"
+    />
+    <mat-error *ngIf="!nameInput.value">Required</mat-error>
+    <button
+      type="reset"
+      class="addperson-button"
+      mat-button
+      *ngIf="name"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="name = ''"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
 
-<div class="buttons">
-  <div class="two-buttons">
+  <div class="buttons">
+    <div class="two-buttons">
+      <button
+        type="submit"
+        mat-flat-button
+        color="primary"
+        [disabled]="f.invalid"
+      >
+        Add Person
+      </button>
+
+      <button mat-flat-button color="primary" (click)="fetchNames()">
+        Fetch Names
+      </button>
+    </div>
+
     <button
       mat-flat-button
-      color="primary"
-      (click)="addPerson(name, nameInput)"
-      [disabled]="nameInput.invalid"
+      color="warn"
+      (click)="clearAll()"
+      [matBadge]="people.length"
     >
-      Add Person
-    </button>
-
-    <button mat-flat-button color="primary" (click)="fetchNames()">
-      Fetch Names
+      Clear All Names
     </button>
   </div>
-
-  <button
-    mat-flat-button
-    color="warn"
-    (click)="clearAll()"
-    [matBadge]="people.length"
-  >
-    Clear All Names
-  </button>
-</div>
+</form>
 
 <mat-list>
   <mat-list-item *ngFor="let person of people; let i = index">
