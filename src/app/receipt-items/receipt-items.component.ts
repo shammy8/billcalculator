@@ -24,11 +24,13 @@ export class ReceiptItemsComponent implements OnInit {
 
   ngOnInit() {
     this.people = this.peopleService.people;
+    this.peopleService.peopleChanged.subscribe((people: string[]) => {
+      this.people = people;
+    });
     this.items = [];
   }
 
   addItem(nameIn: string, priceIn: number, payerIn: string, form: NgForm) {
-    console.log(payerIn);
     this.items.push({
       name: nameIn,
       price: priceIn,

@@ -19,6 +19,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.people = this.peopleService.people;
+    this.peopleService.peopleChanged.subscribe((people: string[]) => {
+      this.people = people;
+    });
   }
 
   // if there are people in the people service it will return true allowing user to go to 2nd step of stepper
@@ -40,7 +43,5 @@ export class AppComponent implements OnInit {
       });
       return { name: person, items: itemsPaidFor, amount: totalAmountDue };
     });
-
-    console.log(this.amountToPay);
   }
 }

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { DialogAlreadyExistsComponent } from './dialog-already-exists/dialog-already-exists.component';
 import { HttpClient } from '@angular/common/http';
@@ -9,7 +9,8 @@ import { DragDropBottomSheetComponent } from './drag-drop-bottom-sheet/drag-drop
   providedIn: 'root',
 })
 export class PeopleService {
-  people: string[] = ['Allan ⭐', 'Samuel'];
+  people: string[] = [];
+  peopleChanged = new EventEmitter<string[]>();
 
   constructor(
     public dialog: MatDialog,
@@ -31,11 +32,11 @@ export class PeopleService {
       this.dialog.open(DialogAlreadyExistsComponent, { data: name });
     } else {
       this.people.unshift(name);
+      this.peopleChanged.emit([...this.people]);
     }
   }
 
   deleteName(index: number) {
-    console.log(index);
     this.people.splice(index, 1);
   }
 
@@ -49,13 +50,13 @@ export class PeopleService {
           data: { fetchedNames: response, addedNames: this.people },
         });
         sheet.afterDismissed().subscribe(selectedNames => {
-          for (const name of selectedNames) {
-            if (!this.people.includes(name)) {
-              this.people.push(name);
-            }
-            // this.people = selectedNames;
-            // console.log(selectedNames);
-          }
+          // for (const name of selectedNames) {
+          //   if (!this.people.includes(name)) {
+          //     this.people.push(name);
+          //   }
+          // }
+          this.people = selectedNames;
+          this.peopleChanged.emit(this.people);
         });
       });
   }

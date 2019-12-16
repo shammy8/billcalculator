@@ -16,6 +16,9 @@ export class PeopleComponent implements OnInit {
 
   ngOnInit() {
     this.people = this.peopleService.people;
+    this.peopleService.peopleChanged.subscribe((people: string[]) => {
+      this.people = people;
+    });
   }
 
   addPerson(name: string, formRef: NgForm) {
@@ -29,6 +32,7 @@ export class PeopleComponent implements OnInit {
 
   fetchNames() {
     this.peopleService.fetchNames();
+    this.people = this.peopleService.people;
   }
 
   clearAll() {
