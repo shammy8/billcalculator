@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material';
 import { DialogAlreadyExistsComponent } from '../dialog-already-exists/dialog-already-exists.component';
 import { PeopleService } from '../people.service';
 import { Item } from '../models/Item';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-receipt-items',
@@ -24,31 +25,21 @@ export class ReceiptItemsComponent implements OnInit {
   ngOnInit() {
     this.people = this.peopleService.people;
     this.items = [
-      { name: 'Steak', price: 23.99, payers: ['Allan'] },
+      { name: 'Steak', price: 23.99, payers: ['Allan ⭐'] },
       { name: 'Burger', price: 12.99, payers: ['Samuel'] },
-      { name: 'Coke', price: 2.99, payers: ['Allan'] },
+      { name: 'Coke', price: 2.99, payers: ['Allan ⭐'] },
     ];
   }
 
-  addItem(
-    nameIn: string,
-    priceIn: number,
-    payerIn: HTMLSelectElement,
-    nameRef,
-    priceRef
-  ) {
+  addItem(nameIn: string, priceIn: number, payerIn: string, form: NgForm) {
+    console.log(payerIn);
     this.items.push({
       name: nameIn,
       price: priceIn,
-      payers: [payerIn.value],
+      payers: [payerIn],
     });
 
-    this.item = '';
-    this.itemPrice = null;
-    this.payer = null;
-
-    nameRef.reset();
-    priceRef.reset();
+    form.resetForm();
   }
 
   addPayerToItem(index: number, payer: HTMLOptionElement) {
