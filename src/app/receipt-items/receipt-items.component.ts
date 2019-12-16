@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSelect } from '@angular/material';
 
 import { DialogAlreadyExistsComponent } from '../dialog-already-exists/dialog-already-exists.component';
 import { PeopleService } from '../people.service';
@@ -24,11 +24,7 @@ export class ReceiptItemsComponent implements OnInit {
 
   ngOnInit() {
     this.people = this.peopleService.people;
-    this.items = [
-      { name: 'Steak', price: 23.99, payers: ['Allan ⭐'] },
-      { name: 'Burger', price: 12.99, payers: ['Samuel'] },
-      { name: 'Coke', price: 2.99, payers: ['Allan ⭐'] },
-    ];
+    this.items = [];
   }
 
   addItem(nameIn: string, priceIn: number, payerIn: string, form: NgForm) {
@@ -42,7 +38,7 @@ export class ReceiptItemsComponent implements OnInit {
     form.resetForm();
   }
 
-  addPayerToItem(index: number, payer: HTMLOptionElement) {
+  addPayerToItem(index: number, payer: MatSelect) {
     if (this.items[index].payers.includes(payer.value)) {
       this.dialog.open(DialogAlreadyExistsComponent, { data: payer.value });
     } else {

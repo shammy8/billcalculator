@@ -35,12 +35,18 @@
         Add Person
       </button>
 
-      <button mat-flat-button color="primary" (click)="fetchNames()">
+      <button
+        type="button"
+        mat-flat-button
+        color="primary"
+        (click)="fetchNames()"
+      >
         Fetch Names
       </button>
     </div>
 
     <button
+      type="button"
       mat-flat-button
       color="warn"
       (click)="clearAll()"
