@@ -1,10 +1,15 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material';
+import {
+  MatBottomSheetRef,
+  MAT_BOTTOM_SHEET_DATA,
+  MatDialog,
+} from '@angular/material';
 import {
   CdkDragDrop,
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
+import { DialogAlreadyExistsComponent } from '../dialog-already-exists/dialog-already-exists.component';
 
 @Component({
   selector: 'app-drag-drop-bottom-sheet',
@@ -16,16 +21,17 @@ export class DragDropBottomSheetComponent implements OnInit {
 
   constructor(
     @Inject(MAT_BOTTOM_SHEET_DATA) public data: any,
-    private bottomSheetRef: MatBottomSheetRef<DragDropBottomSheetComponent>
+    private bottomSheetRef: MatBottomSheetRef<DragDropBottomSheetComponent>,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
     this.selectedNames = [...this.data.addedNames];
 
     const tempFetchnames = [];
-    for (let i = 0; i < this.data.fetchedNames.length; i++) {
-      if (!this.selectedNames.includes(this.data.fetchedNames[i])) {
-        tempFetchnames.push(this.data.fetchedNames[i]);
+    for (const name of this.data.fetchedNames) {
+      if (!this.selectedNames.includes(name)) {
+        tempFetchnames.push(name);
       }
     }
     this.data.fetchedNames = [...tempFetchnames];
@@ -45,6 +51,10 @@ export class DragDropBottomSheetComponent implements OnInit {
         event.previousIndex,
         event.currentIndex
       );
+    }
+    console.log(event.previousContainer);
+    if (event.container.data[event.currentIndex] === 'Grace 💗') {
+      this.dialog.open(DialogAlreadyExistsComponent, { data: 'I 💗 U' });
     }
   }
 
