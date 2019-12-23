@@ -18,6 +18,10 @@ export class DialogAlreadyExistsComponent implements OnInit {
       this.headerMessage = 'Hi Grace,';
       this.message = this.data;
       this.buttonMessage = 'x';
+    } else if (this.data === 'ChristmasMessage') {
+      this.headerMessage = 'To 腐乳';
+      this.message = 'You did it!';
+      this.buttonMessage = 'From Allan';
     } else {
       this.headerMessage = 'Error: Already Exists';
       this.message = `${this.data} already in the list.`;

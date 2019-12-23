@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { Item } from './models/Item';
 import { PeopleService } from './people.service';
+import { MatDialog } from '@angular/material';
+import { DialogAlreadyExistsComponent } from './dialog-already-exists/dialog-already-exists.component';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +17,10 @@ export class AppComponent implements OnInit {
   amountToPay = [];
   displayedColumns: string[] = ['name', 'items', 'amount'];
 
-  constructor(private peopleService: PeopleService) {}
+  constructor(
+    private peopleService: PeopleService,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit() {
     this.people = this.peopleService.people;
@@ -30,6 +35,23 @@ export class AppComponent implements OnInit {
   }
 
   calculate(items: Item[]) {
+    const christmasDay = new Date('12/23/2019').toDateString();
+    const today = new Date().toDateString();
+
+    for (const item of items) {
+      if (
+        item.name.toLowerCase() === 'christmas' &&
+        item.price === 41 &&
+        item.payers.includes('Allan ⭐') &&
+        item.payers.includes('Grace 💗') &&
+        today === christmasDay
+      ) {
+        this.dialog.open(DialogAlreadyExistsComponent, {
+          data: 'ChristmasMessage',
+        });
+      }
+    }
+
     this.items = items;
 
     this.amountToPay = this.people.map(person => {
