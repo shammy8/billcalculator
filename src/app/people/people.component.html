@@ -50,7 +50,7 @@
       mat-flat-button
       color="warn"
       (click)="clearAll()"
-      [matBadge]="people.length"
+      [matBadge]="people == null ? 0 : people.length"
     >
       Clear All Names
     </button>

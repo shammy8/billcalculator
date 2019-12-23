@@ -52,7 +52,6 @@ export class DragDropBottomSheetComponent implements OnInit {
         event.currentIndex
       );
     }
-    console.log(event.previousContainer);
     if (event.container.data[event.currentIndex] === 'Grace 💗') {
       this.dialog.open(DialogAlreadyExistsComponent, { data: 'I 💗 U' });
     }

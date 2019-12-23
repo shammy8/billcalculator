@@ -58,6 +58,9 @@ export class PeopleService {
           this.people = selectedNames;
           this.peopleChanged.emit(this.people);
         });
+        sheet.backdropClick().subscribe(() => {
+          sheet.dismiss(this.people);
+        });
       });
   }
 
