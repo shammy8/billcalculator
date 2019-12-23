@@ -1,3 +1,11 @@
 <h2 mat-dialog-title>{{ headerMessage }}</h2>
-<mat-dialog-content>{{ message }} </mat-dialog-content>
+<mat-dialog-content>
+  <div>{{ message }}</div>
+  <br />
+  <div *ngIf="message1">{{ message1 }}</div>
+  <br />
+  <div *ngIf="message2">{{ message2 }}</div>
+  <br />
+  <div *ngIf="message3">{{ message3 }}</div>
+</mat-dialog-content>
 <button mat-button mat-dialog-close>{{ buttonMessage }}</button>
