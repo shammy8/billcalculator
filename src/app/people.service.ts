@@ -38,6 +38,7 @@ export class PeopleService {
 
   deleteName(index: number) {
     this.people.splice(index, 1);
+    this.peopleChanged.emit([...this.people]);
   }
 
   fetchNames() {
