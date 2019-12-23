@@ -47,18 +47,20 @@ export class AppComponent implements OnInit {
     const christmasDay = new Date('12/23/2019').toDateString();
     const today = new Date().toDateString();
 
-    for (const item of items) {
-      if (
-        item.name.toLowerCase() === 'christmas' &&
-        item.price === 41 &&
-        item.payers.includes('Allan ⭐') &&
-        item.payers.includes('Grace 💗') &&
-        today === christmasDay
-      ) {
-        this.dialog.open(DialogAlreadyExistsComponent, {
-          data: 'ChristmasMessage',
-        });
-      }
+    if (
+      items[0].name.toLowerCase() === 'christmas' &&
+      items[0].price === 16 &&
+      items[0].payers.includes('Allan ⭐') &&
+      items[0].payers.includes('Grace 💗') &&
+      items[1].name.toLowerCase() === 'everest' &&
+      items[1].price === 12.17 &&
+      items[1].payers.includes('Allan ⭐') &&
+      items[1].payers.includes('Grace 💗') &&
+      today === christmasDay
+    ) {
+      this.dialog.open(DialogAlreadyExistsComponent, {
+        data: 'ChristmasMessage',
+      });
     }
 
     this.items = items;

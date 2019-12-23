@@ -20,8 +20,10 @@ export class DialogAlreadyExistsComponent implements OnInit {
       this.buttonMessage = 'x';
     } else if (this.data === 'ChristmasMessage') {
       this.headerMessage = 'To 腐乳';
-      this.message = 'You did it!';
-      this.buttonMessage = 'From Allan';
+      this.message =
+        // tslint:disable-next-line: max-line-length
+        `You did it, You successfully completed the 2019 Christmas Challenge! This is a Bill Splitter or you can call it a "Sharer". You can see two items in our "bill", behind this pop up box. Christmas is a time of joy and happiness, like this "bill" I hope we can "Share" many joyful moment between us. In the same way, we will also face many obstacles some as high as Mount Everest, I also hope we can "Share" our challenges and hardships between us. Your Christmas present is hidden in your room. I hope it can shine a light for you health as the star did for the wisemen 2000 plus years ago. Merry Christms and a Happy New Year.`;
+      this.buttonMessage = 'Love Allan';
     } else {
       this.headerMessage = 'Error: Already Exists';
       this.message = `${this.data} already in the list.`;
