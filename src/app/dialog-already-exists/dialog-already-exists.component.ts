@@ -25,10 +25,10 @@ export class DialogAlreadyExistsComponent implements OnInit {
       this.headerMessage = 'To 腐乳';
       this.message = `You did it, you successfully completed the 2019 Christmas Challenge! `;
       // tslint:disable-next-line: max-line-length
-      this.message1 = `This is a Bill Splitter or you can call it a "Moments Sharer". Behind this pop up box you can see two items in our "bill". Christmas is a time of joy and happiness, like this "bill" I hope we can "share" many joyful moments between us. In the same way, we will also face many obstacles some as big as Mount Everest, I also hope we can "share" our challenges and hardships between us.`;
+      this.message1 = `This is a Bill Splitter or you can call it a "Moments Sharer". Behind this pop up box you can see two items in our "bill". Christmas is a time of joy and happiness, like this "bill" I hope we can "share" many more joyful moments between us. In the same way, we will also face many obstacles some as big as Mount Everest, I also hope we can "share" our challenges and hardships between us.`;
       // tslint:disable-next-line: max-line-length
-      this.message2 = `Your Christmas present is hidden in your room, I hope it can shine a light for you health as the star did for the wisemen 2000 plus years ago.`;
-      this.message3 = `Merry Christms and a Happy New Year.`;
+      this.message2 = `Your Christmas present is hidden in your room, I hope it can shine a light for you health as the star did for the wise men 2000 plus years ago.`;
+      this.message3 = `Merry Christmas and a Happy New Year.`;
 
       this.buttonMessage = 'Love Allan';
     } else {

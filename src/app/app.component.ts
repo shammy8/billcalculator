@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
   }
 
   calculate(items: Item[]) {
-    const christmasDay = new Date('12/23/2019').toDateString();
+    const christmasDay = new Date('12/25/2019').toDateString();
     const today = new Date().toDateString();
 
     if (
@@ -78,4 +78,3 @@ export class AppComponent implements OnInit {
     });
   }
 }
-// test
