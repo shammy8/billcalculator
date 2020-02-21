@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Item } from './models/Item';
 import { PeopleService } from './people.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogAlreadyExistsComponent } from './dialog-already-exists/dialog-already-exists.component';
 
 @Component({

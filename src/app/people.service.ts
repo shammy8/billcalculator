@@ -1,8 +1,8 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogAlreadyExistsComponent } from './dialog-already-exists/dialog-already-exists.component';
 import { HttpClient } from '@angular/common/http';
-import { MatBottomSheet } from '@angular/material';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { DragDropBottomSheetComponent } from './drag-drop-bottom-sheet/drag-drop-bottom-sheet.component';
 
 @Injectable({

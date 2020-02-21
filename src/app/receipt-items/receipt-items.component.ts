@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { MatDialog, MatSelect } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSelect } from '@angular/material/select';
 
 import { DialogAlreadyExistsComponent } from '../dialog-already-exists/dialog-already-exists.component';
 import { PeopleService } from '../people.service';
