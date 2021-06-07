@@ -18,6 +18,7 @@ export class ReceiptItemsComponent implements OnInit {
   item: string;
   itemPrice: number;
   payer: string;
+  paidBy: string;
 
   @Output() sendingItemsToApp = new EventEmitter<Item[]>();
 
@@ -31,11 +32,18 @@ export class ReceiptItemsComponent implements OnInit {
     this.items = [];
   }
 
-  addItem(nameIn: string, priceIn: number, payerIn: string, form: NgForm) {
+  addItem(
+    nameIn: string,
+    priceIn: number,
+    payerIn: string,
+    paidByIn: string,
+    form: NgForm
+  ) {
     this.items.push({
       name: nameIn,
       price: priceIn,
       payers: [payerIn],
+      paidBy: [paidByIn],
     });
 
     form.resetForm();

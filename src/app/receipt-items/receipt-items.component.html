@@ -1,4 +1,4 @@
-<form #f="ngForm" (ngSubmit)="addItem(item, itemPrice, payer, f)">
+<form #f="ngForm" (ngSubmit)="addItem(item, itemPrice, payer, paidBy, f)">
   <div class="form">
     <mat-form-field floatLabel="auto" appearance="standard">
       <mat-label>Name of Item</mat-label>
@@ -68,6 +68,33 @@
       <mat-error *ngIf="!payerInput.value">Required</mat-error>
     </mat-form-field>
   </div>
+
+  <mat-form-field floatLabel="auto" appearance="standard">
+    <mat-label>Paid by</mat-label>
+    <mat-select
+      name="payersOfItem"
+      #payerInput="ngModel"
+      [(ngModel)]="paidBy"
+      required
+    >
+      <mat-option *ngFor="let eachPerson of people" [value]="eachPerson">
+        {{ eachPerson }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="itemPriceInput.value">Two decimal places only</mat-error>
+    <mat-error *ngIf="!itemPriceInput.value">Required</mat-error>
+    <button
+      type="button"
+      mat-button
+      *ngIf="itemPrice"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="itemPrice = 0"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
 
   <div class="main-buttons">
     <button

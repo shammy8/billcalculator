@@ -44,6 +44,7 @@ export class AppComponent implements OnInit {
   }
 
   calculate(items: Item[]) {
+    console.log(items);
     const christmasDay = new Date('12/25/2019').toDateString();
     const today = new Date().toDateString();
 
@@ -65,10 +66,10 @@ export class AppComponent implements OnInit {
 
     this.items = items;
 
-    this.amountToPay = this.people.map(person => {
+    this.amountToPay = this.people.map((person) => {
       let totalAmountDue = 0;
       let itemsPaidFor = [];
-      this.items.forEach(item => {
+      this.items.forEach((item) => {
         if (item.payers.includes(person)) {
           totalAmountDue += item.price / item.payers.length;
           itemsPaidFor = [...itemsPaidFor, item.name];
