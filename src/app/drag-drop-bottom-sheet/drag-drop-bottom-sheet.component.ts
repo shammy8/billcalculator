@@ -1,5 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
+import {
+  MatBottomSheetRef,
+  MAT_BOTTOM_SHEET_DATA,
+} from '@angular/material/bottom-sheet';
 import { MatDialog } from '@angular/material/dialog';
 import {
   CdkDragDrop,
@@ -49,9 +52,9 @@ export class DragDropBottomSheetComponent implements OnInit {
         event.currentIndex
       );
     }
-    if (event.container.data[event.currentIndex] === 'Grace 💗') {
-      this.dialog.open(DialogAlreadyExistsComponent, { data: 'I 💗 U' });
-    }
+    // if (event.container.data[event.currentIndex] === 'Grace 💗') {
+    //   this.dialog.open(DialogAlreadyExistsComponent, { data: 'I 💗 U' });
+    // }
   }
 
   onClick() {

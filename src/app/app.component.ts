@@ -51,12 +51,12 @@ export class AppComponent implements OnInit {
     if (
       items[0].name.toLowerCase() === 'christmas' &&
       items[0].price === 16 &&
-      items[0].payers.includes('Allan ⭐') &&
-      items[0].payers.includes('Grace 💗') &&
+      items[0].sharers.includes('Allan ⭐') &&
+      items[0].sharers.includes('Grace 💗') &&
       items[1].name.toLowerCase() === 'everest' &&
       items[1].price === 12.17 &&
-      items[1].payers.includes('Allan ⭐') &&
-      items[1].payers.includes('Grace 💗') &&
+      items[1].sharers.includes('Allan ⭐') &&
+      items[1].sharers.includes('Grace 💗') &&
       today === christmasDay
     ) {
       this.dialog.open(DialogAlreadyExistsComponent, {
@@ -70,12 +70,33 @@ export class AppComponent implements OnInit {
       let totalAmountDue = 0;
       let itemsPaidFor = [];
       this.items.forEach((item) => {
-        if (item.payers.includes(person)) {
-          totalAmountDue += item.price / item.payers.length;
+        if (item.sharers.includes(person)) {
+          totalAmountDue += item.price / item.sharers.length;
           itemsPaidFor = [...itemsPaidFor, item.name];
         }
       });
       return { name: person, items: itemsPaidFor, amount: totalAmountDue };
     });
+
+    const obj = this.createObjectWithEveryone(this.createObjectWithEveryone(0));
+
+    this.items.forEach((item) => {
+      item.sharers.forEach((sharer) => {
+        obj[item.paidBy][sharer] += item.price / item.sharers.length;
+        obj[sharer][item.paidBy] -= item.price / item.sharers.length;
+      });
+    });
+  }
+
+  private createObjectWithEveryone(value: any) {
+    const object = {};
+    this.people.forEach((person) => {
+      if (typeof value === 'object' && value !== null) {
+        object[person] = { ...value };
+      } else {
+        object[person] = value;
+      }
+    });
+    return object;
   }
 }

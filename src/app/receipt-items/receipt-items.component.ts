@@ -17,7 +17,7 @@ export class ReceiptItemsComponent implements OnInit {
   items: Item[];
   item: string;
   itemPrice: number;
-  payer: string;
+  sharers: string[];
   paidBy: string;
 
   @Output() sendingItemsToApp = new EventEmitter<Item[]>();
@@ -35,30 +35,30 @@ export class ReceiptItemsComponent implements OnInit {
   addItem(
     nameIn: string,
     priceIn: number,
-    payerIn: string,
+    sharerIn: string[],
     paidByIn: string,
     form: NgForm
   ) {
     this.items.push({
       name: nameIn,
       price: priceIn,
-      payers: [payerIn],
-      paidBy: [paidByIn],
+      sharers: sharerIn,
+      paidBy: paidByIn,
     });
 
     form.resetForm();
   }
 
   addPayerToItem(index: number, payer: MatSelect) {
-    if (this.items[index].payers.includes(payer.value)) {
+    if (this.items[index].sharers.includes(payer.value)) {
       this.dialog.open(DialogAlreadyExistsComponent, { data: payer.value });
     } else {
-      this.items[index].payers.push(payer.value);
+      this.items[index].sharers.push(payer.value);
     }
   }
 
   deletePayerFromItem(i: number, iOfPayer: number) {
-    this.items[i].payers.splice(iOfPayer, 1);
+    this.items[i].sharers.splice(iOfPayer, 1);
   }
 
   deleteItem(index: number) {

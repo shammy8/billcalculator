@@ -1,4 +1,4 @@
-<form #f="ngForm" (ngSubmit)="addItem(item, itemPrice, payer, paidBy, f)">
+<form #f="ngForm" (ngSubmit)="addItem(item, itemPrice, sharers, paidBy, f)">
   <div class="form">
     <mat-form-field floatLabel="auto" appearance="standard">
       <mat-label>Name of Item</mat-label>
@@ -54,12 +54,13 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>Payer's Name</mat-label>
+      <mat-label>Shared by</mat-label>
       <mat-select
         name="payersOfItem"
         #payerInput="ngModel"
-        [(ngModel)]="payer"
+        [(ngModel)]="sharers"
         required
+        multiple
       >
         <mat-option *ngFor="let eachPerson of people" [value]="eachPerson">
           {{ eachPerson }}
@@ -125,12 +126,15 @@
   >
     <mat-expansion-panel-header>
       <mat-panel-title>{{ eachItem.name }} </mat-panel-title>
-      <mat-panel-description>£{{ eachItem.price }}</mat-panel-description>
+      <mat-panel-description>
+        £{{ eachItem.price }} &nbsp; paid by
+        {{ eachItem.paidBy }}
+      </mat-panel-description>
       <mat-icon (click)="deleteItem(iOfItems)">clear</mat-icon>
     </mat-expansion-panel-header>
 
     <ul>
-      <li *ngFor="let eachPayer of eachItem.payers; let iOfPayer = index">
+      <li *ngFor="let eachPayer of eachItem.sharers; let iOfPayer = index">
         {{ eachPayer }}
         <mat-icon (click)="deletePayerFromItem(iOfItems, iOfPayer)">
           clear

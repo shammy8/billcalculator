@@ -21,13 +21,13 @@ export class PeopleService {
   addPerson(name: string) {
     name = name.trim();
 
-    if (name === 'grace' || name === 'Grace') {
-      name = 'Grace 💗';
-      this.dialog.open(DialogAlreadyExistsComponent, { data: 'I 💗 U' });
-    }
-    if (name === 'Allan') {
-      name = 'Allan ⭐';
-    }
+    // if (name === 'grace' || name === 'Grace') {
+    //   name = 'Grace💗';
+    //   this.dialog.open(DialogAlreadyExistsComponent, { data: 'I 💗 U' });
+    // }
+    // if (name === 'Allan') {
+    //   name = 'Allan⭐';
+    // }
     if (this.people.includes(name)) {
       this.dialog.open(DialogAlreadyExistsComponent, { data: name });
     } else {
@@ -46,11 +46,11 @@ export class PeopleService {
       .get<string[]>(
         'https://bill-calculator-eaac9.firebaseio.com/friends.json'
       )
-      .subscribe(response => {
+      .subscribe((response) => {
         const sheet = this.bottomSheet.open(DragDropBottomSheetComponent, {
           data: { fetchedNames: response, addedNames: this.people },
         });
-        sheet.afterDismissed().subscribe(selectedNames => {
+        sheet.afterDismissed().subscribe((selectedNames) => {
           // for (const name of selectedNames) {
           //   if (!this.people.includes(name)) {
           //     this.people.push(name);
